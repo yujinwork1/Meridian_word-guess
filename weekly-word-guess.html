@@ -788,7 +788,8 @@ window.wgHandleKey=handleKey;
 function submitGuess(){
   var g=G.currentInput.toUpperCase(),ri=G.guesses.length;
   if(g.length<G.wordLen){shakeRow(ri);toast('Not enough letters');return;}
-  if(!VALID_SET.has(g)&&!EXTRA.has(g)){shakeRow(ri);toast('Not in word list');return;}
+  // Accept any 5-letter English word — no restriction on input
+  // Only the answer words (WORDS array) are used for the weekly answer
   G.isProcessing=true;
   var res=guessResult(g);
   G.guesses.push(g);G.results.push(res);G.currentInput='';
