@@ -545,9 +545,16 @@ function fd(ts){
   return mo+'/'+dd+'/'+yy+' '+(hh<10?'0':'')+hh+':'+(mm<10?'0':'')+mm;
 }
 function dateStr(){
+  // Show the current week's Thursday date (MDT)
+  var now=new Date();
+  var mdt=new Date(now.toLocaleString('en-US',{timeZone:'America/Edmonton'}));
+  var day=mdt.getDay();
+  var thu=new Date(mdt);
+  thu.setDate(mdt.getDate()-((day+3)%7));
+  if(day===4&&mdt.getHours()<8) thu.setDate(thu.getDate()-7);
   var D=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   var M=['January','February','March','April','May','June','July','August','September','October','November','December'];
-  var d=new Date();return D[d.getDay()]+', '+M[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear();
+  return D[thu.getDay()]+', '+M[thu.getMonth()]+' '+thu.getDate()+', '+thu.getFullYear();
 }
 
 // ── SIZING ──
