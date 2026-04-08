@@ -643,14 +643,21 @@ function buildKB(){
   var ks=keySz();
   [['Q','W','E','R','T','Y','U','I','O','P'],
    ['A','S','D','F','G','H','J','K','L'],
-   ['⌫','Z','X','C','V','B','N','M','ENTER']
+   ['ENTER','Z','X','C','V','B','N','M','⌫']
   ].forEach(function(row){
     var re=document.createElement('div');re.className='wg-kb-row';
     row.forEach(function(k){
       var b=document.createElement('button');
       b.className='wg-key'+((k==='ENTER'||k==='⌫')?' wide':'');
-      b.textContent=k;b.dataset.key=k;
+      b.dataset.key=k;
       b.style.height=ks.h+'px';b.style.fontSize=ks.fs+'px';
+      if(k==='⌫'){
+        // Clear SVG backspace icon — bigger, simpler, mobile-friendly
+        b.innerHTML='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/><line x1="18" y1="9" x2="12" y2="15"/><line x1="12" y1="9" x2="18" y2="15"/></svg>';
+        b.style.display='flex';b.style.alignItems='center';b.style.justifyContent='center';
+      } else {
+        b.textContent=k;
+      }
       b.addEventListener('pointerdown',function(e){e.preventDefault();handleKey(k);});
       re.appendChild(b);
     });
