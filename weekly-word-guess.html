@@ -104,6 +104,8 @@ body{background:#08101e;min-height:100vh;overflow-x:hidden}
 .wg-dv{font-size:11px;color:#4a6080;font-family:'DM Mono',monospace}
 .wg-lb-empty{text-align:center;color:#4a6080;font-size:13px;padding:24px 0}
 .wg-lb-loading{text-align:center;color:#4a6080;font-size:13px;padding:20px 0}
+.wg-lb-notice{font-size:11px;color:#4a6080;text-align:center;padding:10px 14px;background:#06101c;border-radius:6px;border:1px solid #1e3a5f;margin-bottom:12px;line-height:1.5}
+.wg-lb-notice span{color:#fbbf24;font-weight:700}
 
 /* TOAST */
 .wg-tw{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:9999;display:flex;flex-direction:column;align-items:center;gap:6px;pointer-events:none;width:90vw}
@@ -615,6 +617,7 @@ window.addEventListener('orientationchange',function(){setTimeout(applySize,160)
       <div class="wg-lb-title">🏆 This Week's Leaderboard</div>
       <div class="wg-lb-sub">Ranked by fastest time</div>
     </div>
+    <div class="wg-lb-notice">Leaderboard resets every <span>Thursday at 8:00 AM</span> [MDT]</div>
     <div id="wgLbList"><div class="wg-lb-loading">Loading scores…</div></div>
   </div>
 </div>`;
